@@ -99,7 +99,8 @@
 				TargetAttributes = {
 					A3DBEE751E29104400AFA016 = {
 						CreatedOnToolsVersion = 8.2;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = Z3GEUSFAX6;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -262,10 +263,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Z3GEUSFAX6;
 				INFOPLIST_FILE = TESLA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qburst2.TESLA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b7237390-825b-4df7-b2f4-fde21495675b";
+				PROVISIONING_PROFILE_SPECIFIER = QB_GENERIC_PROFILE_May13_2016;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,7 +279,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TESLA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qburst2.TESLA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -301,6 +308,7 @@
 				A3DBEE8D1E29104400AFA016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
