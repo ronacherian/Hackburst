@@ -8,13 +8,19 @@
 
 import UIKit
 import AVFoundation
+import CoreMotion
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var cameraView: UIView!
     
+    @IBOutlet weak var countLabel: UILabel!
     var captureSession:AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    
+    var corePedometer:CMPedometer = CMPedometer()
+    var motionManager: CMMotionManager!
+    var timer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +32,18 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         self.setupCameraSession()
+        
+        motionManager = CMMotionManager()
+        motionManager.startAccelerometerUpdates()
+        motionManager.startGyroUpdates()
+        motionManager.startMagnetometerUpdates()
+        motionManager.startDeviceMotionUpdates()
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
+        
+        setPedometer()
+
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,6 +73,54 @@ class ViewController: UIViewController {
         cameraView.layer.addSublayer(previewLayer)
         
         captureSession.startRunning()
+        
+    }
+    
+    func setPedometer(){
+        let startDate = Date().addingTimeInterval(-84000)
+        if CMPedometer.isStepCountingAvailable() {
+    
+            self.corePedometer.startUpdates(from: startDate, withHandler: { (data:CMPedometerData?, error:Error?) in
+              
+                if let steps = data?.numberOfSteps{
+                    print("STEPS = \(steps)")
+                    
+                    self.countLabel.text = String(describing: steps)
+                }
+                
+            
+            })
+
+        }
+    }
+    
+    func update() {
+        
+//        if let accelerometerData = motionManager.accelerometerData {
+//            
+//            print(accelerometerData)
+//            
+//        }
+        
+        if let gyroData = motionManager.gyroData {
+            
+            print(gyroData)
+            
+  
+            
+        }
+        
+//        if let magnetometerData = motionManager.magnetometerData {
+//            
+//            print(magnetometerData)
+//            
+//        }
+//        
+//        if let deviceMotion = motionManager.deviceMotion {
+//            
+//            print(deviceMotion)
+//            
+//        }
         
     }
 
