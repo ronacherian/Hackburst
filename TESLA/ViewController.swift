@@ -38,7 +38,19 @@ class ViewController: UIViewController {
         motionManager.startGyroUpdates()
         motionManager.startMagnetometerUpdates()
         motionManager.startDeviceMotionUpdates()
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
+        
+        let queue = OperationQueue()
+        
+        motionManager.startGyroUpdates(to: queue) { (data:CMGyroData?, error:Error?) in
+            
+            DispatchQueue.main.async {
+                
+//                print(self.motionManager.deviceMotion?.attitude.roll ?? 0.0)
+                print(self.motionManager.deviceMotion?.attitude.quaternion ?? 0.0)
+//                print(self.motionManager.deviceMotion?.attitude.yaw ?? 0.0)
+            }
+            
+        }
         
         setPedometer()
 
@@ -77,15 +89,21 @@ class ViewController: UIViewController {
     }
     
     func setPedometer(){
-        let startDate = Date().addingTimeInterval(-84000)
+        let startDate = Date()
         if CMPedometer.isStepCountingAvailable() {
     
             self.corePedometer.startUpdates(from: startDate, withHandler: { (data:CMPedometerData?, error:Error?) in
               
                 if let steps = data?.numberOfSteps{
+                    
+                    DispatchQueue.main.async {
+                        self.countLabel.text = String(describing: steps)
+                    }
+                    
+                    
                     print("STEPS = \(steps)")
                     
-                    self.countLabel.text = String(describing: steps)
+                    
                 }
                 
             
@@ -94,35 +112,5 @@ class ViewController: UIViewController {
         }
     }
     
-    func update() {
-        
-//        if let accelerometerData = motionManager.accelerometerData {
-//            
-//            print(accelerometerData)
-//            
-//        }
-        
-        if let gyroData = motionManager.gyroData {
-            
-            print(gyroData)
-            
-  
-            
-        }
-        
-//        if let magnetometerData = motionManager.magnetometerData {
-//            
-//            print(magnetometerData)
-//            
-//        }
-//        
-//        if let deviceMotion = motionManager.deviceMotion {
-//            
-//            print(deviceMotion)
-//            
-//        }
-        
-    }
-
 }
 
