@@ -58,8 +58,8 @@ class ViewController: UIViewController {
         guard let attitude = notification.object as? CMAttitude else {
             return
         }
-        self.pitchLabelValue.text = String(((attitude.pitch )/M_PI)*180)
-        self.rollL.text = String(((attitude.roll )/M_PI)*180)
+        //self.pitchLabelValue.text = String(((attitude.pitch )/M_PI)*180)
+        //self.rollL.text = String(((attitude.roll )/M_PI)*180)
         let yaByXa = self.yapoint/(self.xapoint - self.myxPoint)
         let sinInverseA = (asin(yaByXa)/M_PI)*180
         
