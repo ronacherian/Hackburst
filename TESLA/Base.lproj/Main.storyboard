@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq0-db-Sek">
-                                <rect key="frame" x="173" y="319" width="30" height="30"/>
+                                <rect key="frame" x="167" y="319" width="42" height="30"/>
                                 <connections>
                                     <action selector="showDirection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HLc-n4-bc3"/>
                                     <segue destination="5E7-9o-YaQ" kind="show" id="bpu-RD-G9E"/>
@@ -84,7 +84,9 @@
                             <constraint firstItem="Esk-lg-DPE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="7Eh-fe-Od1"/>
                             <constraint firstItem="XP2-QB-mXS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EVe-Ub-sEr"/>
                             <constraint firstItem="DRj-Ly-68C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="Eui-2g-tB9"/>
+                            <constraint firstItem="yq0-db-Sek" firstAttribute="width" secondItem="XP2-QB-mXS" secondAttribute="width" id="IwF-xo-JOi"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7HF-hY-B4C" secondAttribute="bottom" id="JON-3S-wUF"/>
+                            <constraint firstItem="yq0-db-Sek" firstAttribute="height" secondItem="XP2-QB-mXS" secondAttribute="height" id="Mb6-Og-DkV"/>
                             <constraint firstItem="mIM-AA-kF9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="P67-sb-099"/>
                             <constraint firstItem="KWu-i9-GQt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="150" id="SRI-39-GGh"/>
                             <constraint firstItem="Esk-lg-DPE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="SbL-AI-5NK"/>

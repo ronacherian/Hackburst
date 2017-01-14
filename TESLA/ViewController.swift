@@ -70,6 +70,8 @@ class ViewController: UIViewController {
         let sinInverseC = (asin(ycByXc)/M_PI)*180
         
         let yawVal = (((attitude.yaw)/M_PI)*180)
+        self.countLabel.textColor = UIColor.red
+        self.countLabel.backgroundColor = UIColor.clear
         if ( yawVal < sinInverseA+20 && yawVal > sinInverseA-20){
             self.countLabel.text = "FOUND A";
         } else if ( yawVal < sinInverseB+20 && yawVal > sinInverseB-20){
@@ -78,7 +80,9 @@ class ViewController: UIViewController {
             self.countLabel.text = "FOUND C";
         }
         else {
-            self.countLabel.text = String(((attitude.yaw)/M_PI)*180)
+            //self.countLabel.text = String(((attitude.yaw)/M_PI)*180)
+            self.countLabel.text = "Searching..."
+            self.countLabel.textColor = UIColor.blue
         }
         
         
